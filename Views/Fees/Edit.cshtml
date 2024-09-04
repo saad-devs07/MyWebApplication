@@ -1,0 +1,44 @@
+﻿@model MyWebApplication.Models.Fee
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Fee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FId" />
+            <div class="form-group">
+                <label asp-for="FMonth" class="control-label"></label>
+                <select asp-for="FMonth" class="form-control" asp-items="Html.GetEnumSelectList<FMonth>()"></select>
+                <span asp-validation-for="FMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FAmount" class="control-label"></label>
+                <input asp-for="FAmount" class="form-control" />
+                <span asp-validation-for="FAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SId" class="control-label"></label>
+                <select asp-for="SId" class="form-control" asp-items="ViewBag.SId"></select>
+                <span asp-validation-for="SId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
